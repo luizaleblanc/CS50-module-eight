@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Minha Homepage - Contato</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <a class="navbar-brand" href="index.html">Meu Site</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="projetos.html">Projetos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="hobbies.html">Hobbies</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="contato.html">Contato</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container mt-5">
+      <h2>Contato</h2>
+      <p>Envie uma mensagem!</p>
+
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="nameInput">Nome</label>
+          <input type="text" class="form-control" id="nameInput" placeholder="Seu Nome" />
+        </div>
+        <div class="form-group">
+          <label for="messageInput">Mensagem</label>
+          <textarea class="form-control" id="messageInput" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Enviar</button>
+      </form>
+
+      <div id="form-feedback" class="mt-3"></div>
+    </main>
+
+    <footer class="text-center mt-5">
+      <p>Copyright © 2025</p>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // Espera a página carregar
+      document.addEventListener("DOMContentLoaded", function () {
+        // Seleciona o formulário
+        let form = document.querySelector("#contact-form");
+
+        // Adiciona um "ouvinte" para o evento 'submit'
+        form.addEventListener("submit", function (event) {
+          // 1. Impede o formulário de realmente enviar (e recarregar a página)
+          event.preventDefault();
+
+          // 2. Pega o nome que o usuário digitou
+          let name = document.querySelector("#nameInput").value;
+          if (name === "") {
+            name = "Visitante"; // Valor padrão
+          }
+
+          // 3. Mostra a mensagem de feedback
+          let feedback = document.querySelector("#form-feedback");
+          feedback.textContent = "Obrigado pelo contato, " + name + "!";
+          feedback.className = "alert alert-success"; // Usa classes do Bootstrap
+
+          // 4. Limpa o formulário
+          form.reset();
+        });
+      });
+    </script>
+  </body>
+</html>

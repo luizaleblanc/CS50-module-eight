@@ -1,0 +1,35 @@
+/* 1. Seletor de tag (body) */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+
+    /* ▼▼▼ A CORREÇÃO ESTÁ AQUI ▼▼▼ */
+    /* Adiciona espaço no topo para compensar o header fixo */
+    padding-top: 70px; /* Ajuste este valor se sua navbar for maior */
+}
+
+/* 2. Seletor de classe (.jumbotron) */
+.jumbotron {
+    background-color: #e9ecef;
+    padding: 2rem;
+}
+
+/* 3. Seletor de tag (h2) */
+h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* 4. Seletor de tag (footer) */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    background-color: #343a40;
+    color: white;
+}
+
+/* 5. Seletor de ID (#form-feedback) */
+#form-feedback {
+    font-weight: bold;
+}
