@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trivia CS50</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Trivia</h1>
+
+      <div class="section">
+        <h2>Parte 1: Múltipla Escolha</h2>
+        <hr />
+        <h3>Qual é a capital do Brasil?</h3>
+
+        <p id="feedback1"></p>
+
+        <button class="incorrect-mc">Rio de Janeiro</button>
+        <button class="correct-mc">Brasília</button>
+        <button class="incorrect-mc">São Paulo</button>
+      </div>
+
+      <div class="section">
+        <h2>Parte 2: Resposta Livre</h2>
+        <hr />
+        <h3>Qual elemento químico tem o símbolo 'H'?</h3>
+
+        <p id="feedback2"></p>
+
+        <input type="text" id="free-answer-input" />
+        <button id="check-btn">Confirmar</button>
+      </div>
+    </div>
+
+    <script>
+      // Espera o DOM (a página) carregar completamente
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- LÓGICA DA PARTE 1 ---
+
+        // Seleciona o botão de resposta CORRETA
+        let correctButton = document.querySelector(".correct-mc");
+        let feedback1 = document.querySelector("#feedback1");
+
+        correctButton.addEventListener("click", function () {
+          correctButton.classList.add("correct"); // Adiciona a classe 'correct'
+          feedback1.textContent = "Correto!";
+        });
+
+        // Seleciona TODOS os botões de resposta INCORRETA
+        let incorrectButtons = document.querySelectorAll(".incorrect-mc");
+
+        // Itera sobre cada botão incorreto e adiciona um evento de clique
+        for (let i = 0; i < incorrectButtons.length; i++) {
+          incorrectButtons[i].addEventListener("click", function () {
+            incorrectButtons[i].classList.add("incorrect"); // Adiciona a classe 'incorrect'
+            feedback1.textContent = "Incorreto";
+          });
+        }
+
+        // --- LÓGICA DA PARTE 2 ---
+
+        let checkButton = document.querySelector("#check-btn");
+        let inputField = document.querySelector("#free-answer-input");
+        let feedback2 = document.querySelector("#feedback2");
+
+        checkButton.addEventListener("click", function () {
+          // Pega o valor do input, remove espaços e converte para minúsculas
+          let answer = inputField.value.trim().toLowerCase();
+
+          // Verifica se a resposta está correta
+          if (answer === "hidrogênio" || answer === "hidrogenio") {
+            inputField.classList.add("correct");
+            feedback2.textContent = "Correto!";
+          } else {
+            inputField.classList.add("incorrect");
+            feedback2.textContent = "Incorreto!";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
